@@ -40,7 +40,7 @@ We will use the principle of _Object Composition_ to create the `NoDict` class. 
    >>> print(Node("Kevin", 21))
    Node(k="Kevin" v=21)
    ```
-- The Node class should hash it's own key, and keep that hash value as an instance attribute `self.hash`.  This hash value will be used by the NoDict class.
+- The Node class should hash it's own key, and keep that hash value as an instance attribute `self.hash`.  This hash value will be used by the NoDict class.  Use the built-in Python `hash` function for this.
 - The Node class object should be able to compare itself to other Node objects using the Python built-in `==` operator.  For example
    ```python
    n1 = Node('Mike', 21)
@@ -54,6 +54,7 @@ We will use the principle of _Object Composition_ to create the `NoDict` class. 
    n1 == n2 ? True
    n2 == n3 ? False
    ```
+   To do make this possible, implement the `__eq__` method within the Node class.
 - Each method defined in the Node class should have a docstring.
 
 # Part B - NoDict class
@@ -91,13 +92,21 @@ The buckets are the important part of the `NoDict` class, where all the key/valu
    raise KeyError(f'{key} not found')
    ```
 
-At this point, you now have defined a `NoDict` class object that emulates a basic associative dictionary that can store and retrieve key/value pairs.  You have used object composition by declaring a `Node` class to represent a hashed associative binding, and then used those Nodes within the NoDict class.  You have also uncovered the secret of why dictionaries perform at close to ideal **O(1)** (constant time) lookup speed:  Instead of iterating over a giant list of Nodes, you are using the **hash** function to directly compute the bucket index of where to find a Node.
+- `__setitem__` - Implement this magic "dunder" method within the `NoDict` class, to enable square-bracket _writing_ behavior.  Think of it like a setter method.  After enabling this behavior, you will be able to do this:
+   ```python
+      my_dict = NoDict()
+      my_dict['Kevin'] = 21
+   ```
 
-## Part C - dunder methods
-under construction
+- `__getitem__` - Implement this magic "dunder" method within the `NoDict` class, to enable square-bracket _reading_ behavior.  This will make the class behave more like a regular dictionary.  Without enabling this behavior, you could not write an expression like this
+   ```python
+   kevin_age = my_dict['Kevin']
+   ```
+At this point, you now have defined a very basic `NoDict` data structure that functions as an associative dictionary that can store and retrieve key/value pairs.  You have used object composition by declaring a `Node` class to represent a hashed associative binding, and then used those Nodes within the NoDict class.  You have also uncovered the secret of why dictionaries perform at close to ideal **O(1)** (constant time) lookup speed:  Instead of iterating over a giant list of Nodes, you are using the **hash** function to directly compute the bucket index of where to find a Node.
 
+## Part C - Testing
+By now you should be familiar with how to run the tests that come with this assignment.  Use the VSCode 'test tube' or use the command line `python -m unittest` to make sure all the tests are passing before submitting your code.
 
-## Testing
 
 
 
