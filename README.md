@@ -30,15 +30,19 @@ We will use the principle of _Object Composition_ to create the `NoDict` class. 
    ```
 - The key and the value should be stored as instance variables within `Node`.
 - Within the Node class, define and implement python "dunder" methods for `__init__`,  `__repr__`, and `__eq__`
-- The Node class should print a human-readable representation of it's key/value contents when asked. For example, this is not very readable
+- The Node class should print a human-readable representation of it's key/value contents when asked. The `__repr__` method can do this.  For example, this is not very readable
    ```python
    >>> print(Node("Kevin", 21))
    <__main__.Node object at 0x7f4b24f33580>
    ```
-   This is more readable, and shows the contents of the Node:
+   This is more readable, and shows the contents of the Node.  It also adheres to the rules about what to return from a `__repr__` method vs. a `__str__` method.  The `__repr__` method should return a string representation of a Python object that may be evaluated by the Python interpreter to [instantiate another instance](https://stackoverflow.com/questions/37779105/writing-a-repr-method) of the object.
    ```python
    >>> print(Node("Kevin", 21))
-   Node(k="Kevin" v=21)
+   Node("Kevin", 21)
+   ```
+   Implement the `__repr__` method like this:
+   ```python
+   return f'{self.__class__.__name__}({self.key}, {self.value})'
    ```
 - The Node class should hash it's own key, and keep that hash value as an instance attribute `self.hash`.  This hash value will be used by the NoDict class.  Use the built-in Python `hash` function for this.
 - The Node class object should be able to compare itself to other Node objects using the Python built-in `==` operator.  For example
@@ -71,7 +75,7 @@ The buckets are the important part of the `NoDict` class, where all the key/valu
 
 - `__init__` - class initializer to create the buckets according to a size parameter.  Save the size parameter as an instance variable in the class.  Create another instance variable to hold the bucket list.  Your instance variable should be named `self.buckets`.
 
-- `__repr__` - string representation of the contents of the buckets.  The `__repr__` dunder method will be called any time you print the dictionary.  It will give a detailed view of everything, to help you in debugging.  Use the following code snipped for this method:
+- `__repr__` - string representation of the contents of the buckets.  The `__repr__` dunder method will be called any time you print the dictionary.  It will give a detailed view of everything, to help you in debugging.  You may notice that this repr method does not strictly adhere to the same rule that we used for the Node object, which is okay for this example problem because we want to see all the buckets.   Use the following code snippet for this method:
 ```python
       def __repr__(self):
          """Return a string representing the NoDict contents"""

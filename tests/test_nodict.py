@@ -17,7 +17,7 @@ sys.dont_write_bytecode = True
 # Ensure python 3+
 assert sys.version_info[0] >= 3
 
-# devs: change this to soln.nodict to test solution
+# curriculum devs: change this to 'soln.nodict' to test solution
 PKG_NAME = 'nodict'
 
 # alias for module under test
@@ -69,7 +69,7 @@ class TestNode(unittest.TestCase):
         """Check if the __repr__ method is correct"""
         melvin = nodict.Node("Melvin")
         self.assertEqual(
-            repr(melvin), "Node: k=Melvin v=None"
+            repr(melvin), "Node(k=Melvin v=None)"
         )
 
 
@@ -154,8 +154,6 @@ class TestNoDict(unittest.TestCase):
         self.assertEqual(d.get("Zeppo"), 54)
         d.add("Zeppo", 56)
         self.assertEqual(d.get("Zeppo"), 56)
-
-
 
 
 if __name__ == '__main__':
