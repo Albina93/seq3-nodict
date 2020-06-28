@@ -111,4 +111,5 @@ By now you should be familiar with how to run the tests that come with this assi
 
 
 # References
-[The Mighty Dictionary](https://www.youtube.com/watch?v=rWdF7oW6z18) - Brandon Craig Rhodes
+- [The Mighty Dictionary](https://www.youtube.com/watch?v=rWdF7oW6z18) - Brandon Craig Rhodes
+- [High Performance Python](https://www.oreilly.com/library/view/high-performance-python/9781449361747/ch04.html) -  Micha Gorelick, Ian Ozsvald
