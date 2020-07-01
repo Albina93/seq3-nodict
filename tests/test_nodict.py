@@ -22,6 +22,8 @@ PKG_NAME = 'nodict'
 
 # alias for module under test
 nodict = None
+classes = None
+funcs = None
 
 
 def import_helper(pkg_name):
@@ -69,7 +71,7 @@ class TestNode(unittest.TestCase):
         """Check if the __repr__ method is correct"""
         melvin = nodict.Node("Melvin")
         self.assertEqual(
-            repr(melvin), "Node(k=Melvin v=None)"
+            repr(melvin), "Node(Melvin, None)"
         )
 
 
@@ -154,6 +156,15 @@ class TestNoDict(unittest.TestCase):
         self.assertEqual(d.get("Zeppo"), 54)
         d.add("Zeppo", 56)
         self.assertEqual(d.get("Zeppo"), 56)
+
+    def test_doc_strings(self):
+        """Checking for docstrings on all methods"""
+        d = nodict.NoDict()
+        for name, func in inspect.getmembers(d, inspect.ismethod):
+            self.assertIsNotNone(
+                func.__doc__,
+                f"Please add a docstring in the {name} method"
+            )
 
 
 if __name__ == '__main__':
