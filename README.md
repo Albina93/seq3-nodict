@@ -1,3 +1,5 @@
+<img height="120" src="img/200-no-dictionaries-pls.png" />
+
 # NoDict - A dictionary without a dictionary
 For this assignment, you will be using Python classes to create a new object that behaves like a dictionary in Python, but you are not allowed to use a built-in dictionary in your implementation. The purpose is to gain a better understanding of how dictionaries function under the hood by creating your own.
 
