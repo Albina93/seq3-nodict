@@ -111,10 +111,11 @@ The buckets are the important part of the `NoDict` class, where all the key/valu
 At this point, you now have defined a very basic `NoDict` data structure that functions as an associative dictionary that can store and retrieve key/value pairs.  You have used object composition by declaring a `Node` class to represent a hashed associative binding, and then used those Nodes within the NoDict class.  You have also uncovered the secret of why dictionaries perform at close to ideal **O(1)** (constant time) lookup speed:  Instead of iterating over a giant list of Nodes, you are using the **hash** function to directly compute the bucket index of where to find a Node.
 
 ## Part C - Testing
-By now you should be familiar with how to run the tests that come with this assignment.  Use the VSCode 'test tube' or use the command line `python -m unittest` to make sure all the tests are passing before submitting your code.
+By now you should be familiar with how to run the tests that come with assignments.  Here are a couple of options for testing:
+- Use the built-in VSCode "Test Tube" extension by searching the command pallette for `Python: Configure Tests`. Choose "unittest" as your framework, and "tests" as the folder containing the tests, and `test*.py` as the file pattern.  The test tube should appear in your Navigator bar.
+- Use the command line : `python -m unittest tests/test_nodict.py`
 
-
-
+Make sure all of the provided tests are passing before submitting your pull request.
 
 # References
 - [The Mighty Dictionary](https://www.youtube.com/watch?v=rWdF7oW6z18) - Brandon Craig Rhodes
